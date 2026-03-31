@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Malaimathi T C | Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* THEME VARIABLES - DARK TEAL + GOLD */
+      :root {
+        --bg: #071a1a;
+        --text: #e6fffa;
+        --section: #0f2f2f;
+        --navbg: rgba(7, 26, 26, 0.85);
+        --border: #facc15;
+        --card-bg: rgba(250, 204, 21, 0.08);
+        --collapse-bg: #1a3a3a;
+        --collapse-border: #facc15;
+        --box-bg: rgba(250, 204, 21, 0.12);
+        --box-bg-clean: #1a3a3a;
+        --accent-gold: #facc15;
+        --accent-gold-dark: #ca8a04;
+        --chatbot-bg: #1a3a3a;
+        --chatbot-user: #facc15;
+        --chatbot-bot: #1a3a3a;
+      }
+      body.light {
+        --bg: #f0fdfa;
+        --text: #083344;
+        --section: #ffffff;
+        --navbg: rgba(255, 255, 255, 0.95);
+        --border: #ca8a04;
+        --card-bg: rgba(202, 138, 4, 0.05);
+        --collapse-bg: #fff9e6;
+        --collapse-border: #ca8a04;
+        --box-bg: rgba(202, 138, 4, 0.08);
+        --box-bg-clean: #f5f5f5;
+        --accent-gold: #ca8a04;
+        --accent-gold-dark: #b97c0a;
+        --chatbot-bg: #fff9e6;
+        --chatbot-user: #ca8a04;
+        --chatbot-bot: #fff9e6;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.3s, color 0.2s;
+        overflow-x: hidden;
+      }
+
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        background: var(--navbg);
+        backdrop-filter: blur(6px);
+        z-index: 10;
+        border-bottom: 1px solid rgba(250, 204, 21, 0.3);
+      }
+      nav h1 {
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: var(--accent-gold);
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+      }
+      nav a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.85;
+        transition: 0.2s;
+      }
+      nav a:hover {
+        opacity: 1;
+        color: var(--accent-gold);
+      }
+      .toggle {
+        border: 1px solid var(--border);
+        padding: 6px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 13px;
+        background: transparent;
+        color: var(--text);
+        transition: 0.2s;
+      }
+      .toggle:hover {
+        background: rgba(250, 204, 21, 0.2);
+      }
+
+      /* HERO */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 10%;
+        position: relative;
+        z-index: 5;
+      }
+      .hero-img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent-gold);
+        margin-bottom: 24px;
+        box-shadow: 0 8px 20px rgba(250, 204, 21, 0.3);
+      }
+      .hero h2 {
+        font-size: 52px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: var(--accent-gold);
+      }
+      .hero p {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-top: 10px;
+        max-width: 900px;
+      }
+
+      /* SECTIONS - REDUCED SPACING */
+      section {
+        padding: 60px 10%;
+        position: relative;
+        z-index: 5;
+        background: var(--section);
+        transition: background 0.3s;
+      }
+      section h3 {
+        font-size: 28px;
+        border-left: 4px solid var(--accent-gold);
+        padding-left: 14px;
+        margin-bottom: 24px;
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      section p,
+      li {
+        line-height: 1.7;
+        opacity: 0.9;
+      }
+
+      /* SKILL BOXES GRID - NO YELLOW SHADE INSIDE */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 16px;
+      }
+      .skill-box {
+        background: var(--box-bg-clean);
+        border: 1px solid var(--collapse-border);
+        border-radius: 16px;
+        padding: 20px 24px;
+        flex: 1;
+        min-width: 200px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .skill-box:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
+        border-color: var(--accent-gold);
+      }
+      .skill-box p {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0;
+        opacity: 0.95;
+      }
+      .skill-img {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 12px auto;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: cover;
+      }
+
+      /* PROGRAMMING LANGUAGES - LOGO ABOVE TEXT WITH POINTS */
+      .programming-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 16px;
+      }
+      .lang-item {
+        background: var(--box-bg-clean);
+        border: 1px solid var(--collapse-border);
+        border-radius: 16px;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: 0.2s;
+        min-width: 200px;
+        text-align: center;
+        flex: 1;
+      }
+      .lang-item:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-gold);
+      }
+      .lang-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: cover;
+      }
+      .lang-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 4px;
+        color: var(--accent-gold);
+      }
+      .lang-points {
+        margin-top: 8px;
+        text-align: left;
+        width: 100%;
+      }
+      .lang-points p {
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 6px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .lang-points p::before {
+        content: "▹";
+        color: var(--accent-gold);
+        font-size: 10px;
+      }
+
+      /* SOFTWARE TOOLS - LOGO ABOVE TEXT WITH POINTS */
+      .tools-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 16px;
+        justify-content: center;
+      }
+      .tool-item {
+        background: var(--box-bg-clean);
+        border: 1px solid var(--collapse-border);
+        border-radius: 16px;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: 0.2s;
+        min-width: 200px;
+        text-align: center;
+        flex: 1;
+      }
+      .tool-item:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-gold);
+      }
+      .tool-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: cover;
+      }
+      .tool-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 4px;
+        color: var(--accent-gold);
+      }
+      .tool-points {
+        margin-top: 8px;
+        text-align: left;
+        width: 100%;
+      }
+      .tool-points p {
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 6px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .tool-points p::before {
+        content: "▹";
+        color: var(--accent-gold);
+        font-size: 10px;
+      }
+
+      /* Second row container for reduced box sizes */
+      .tools-second-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 24px;
+        justify-content: center;
+      }
+      .tools-second-row .tool-item {
+        flex: 0 1 280px;
+        min-width: 250px;
+        max-width: 300px;
+      }
+
+      /* EDUCATION CARDS - NO YELLOW SHADE INSIDE */
+      .education-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 16px;
+      }
+      .edu-card {
+        background: var(--box-bg-clean);
+        border: 1px solid var(--collapse-border);
+        border-radius: 20px;
+        padding: 24px;
+        flex: 1;
+        min-width: 250px;
+        transition: 0.2s;
+      }
+      .edu-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-gold);
+      }
+      .edu-card h4 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+      .edu-card p {
+        margin: 6px 0;
+        font-size: 15px;
+      }
+
+      /* PROJECT IMAGE STYLES - INCREASED SIZE */
+      .project-with-image {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        align-items: flex-start;
+      }
+      .project-image {
+        flex-shrink: 0;
+        width: 380px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--collapse-border);
+        background: var(--card-bg);
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .project-image:hover {
+        transform: scale(1.02);
+      }
+      .project-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+      .project-content {
+        flex: 1;
+        min-width: 280px;
+      }
+      .project-title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+        display: inline-block;
+        border-bottom: 2px solid var(--accent-gold);
+        padding-bottom: 4px;
+        color: var(--accent-gold);
+      }
+      .project-links {
+        margin: 12px 0;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .project-links a {
+        color: var(--accent-gold);
+        text-decoration: none;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: opacity 0.2s;
+      }
+      .project-links a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+
+      /* LIGHTBOX MODAL STYLES */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 40px;
+        color: var(--accent-gold);
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+        z-index: 2001;
+      }
+      .lightbox-close:hover {
+        color: #fff;
+        transform: scale(1.1);
+      }
+
+      /* COLLAPSIBLE POP-DOWN STYLES */
+      .collapsible-section {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--card-bg);
+        border: 1px solid var(--collapse-border);
+        transition: all 0.2s;
+      }
+
+      .collapsible-header {
+        background: var(--collapse-bg);
+        padding: 12px 22px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.3px;
+        transition: 0.2s;
+        border-left: 3px solid var(--accent-gold);
+        color: var(--text);
+      }
+
+      .collapsible-header:hover {
+        background: rgba(250, 204, 21, 0.15);
+      }
+
+      .collapsible-header span {
+        font-size: 1.4rem;
+        transition: transform 0.25s ease;
+        color: var(--accent-gold);
+      }
+
+      .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 22px;
+        background: var(--section);
+        transition: max-height 0.45s cubic-bezier(0.33, 1, 0.68, 1),
+          padding 0.2s;
+        border-top: 0px solid transparent;
+      }
+
+      .collapsible-content.show {
+        max-height: 800px;
+        padding: 16px 22px 20px 22px;
+        border-top: 1px solid var(--collapse-border);
+      }
+
+      .collapsible-content ul,
+      .collapsible-content p {
+        margin-bottom: 10px;
+      }
+
+      .collapsible-content li {
+        margin-left: 20px;
+      }
+
+      hr {
+        margin: 24px 0;
+        border-color: var(--collapse-border);
+        opacity: 0.4;
+      }
+
+      /* CONTACT SECTION WITH RIGHT ALIGNED FORM - NO YELLOW SHADE */
+      .contact-wrapper {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 16px;
+      }
+      .contact-info {
+        flex: 1;
+        min-width: 240px;
+      }
+      .contact-info p {
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .contact-info p strong {
+        color: var(--accent-gold);
+      }
+      .contact-form {
+        flex: 1;
+        min-width: 280px;
+        background: var(--box-bg-clean);
+        padding: 28px;
+        border-radius: 24px;
+        border: 1px solid var(--collapse-border);
+      }
+      .contact-form h4 {
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 12px;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.2);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .submit-btn {
+        background: var(--accent-gold);
+        color: var(--bg);
+        border: none;
+        padding: 12px 28px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+        font-size: 15px;
+      }
+      .submit-btn:hover {
+        opacity: 0.85;
+        transform: scale(0.98);
+        background: var(--accent-gold-dark);
+      }
+      .form-message {
+        margin-top: 14px;
+        font-size: 13px;
+      }
+
+      /* CHATBOT STYLES - BOTTOM POSITION */
+      .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+      .chatbot-toggle {
+        background: var(--accent-gold);
+        color: var(--bg);
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+        transition: transform 0.3s;
+        font-size: 26px;
+        font-weight: bold;
+      }
+      .chatbot-toggle:hover {
+        transform: scale(1.05);
+      }
+      .chatbot-window {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        width: 350px;
+        height: 450px;
+        background: var(--chatbot-bg);
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .chatbot-window.hidden {
+        display: none;
+      }
+      .chatbot-header {
+        background: var(--accent-gold);
+        padding: 12px 15px;
+        color: var(--bg);
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .chatbot-header button {
+        background: none;
+        border: none;
+        color: var(--bg);
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .chatbot-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .message {
+        max-width: 85%;
+        padding: 10px 14px;
+        border-radius: 18px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .message.user {
+        background: var(--chatbot-user);
+        color: var(--bg);
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+      }
+      .message.bot {
+        background: var(--chatbot-bot);
+        color: var(--text);
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+        border: 1px solid var(--border);
+      }
+      .chatbot-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid var(--border);
+        background: var(--card-bg);
+      }
+      .chatbot-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--bg);
+        color: var(--text);
+        outline: none;
+      }
+      .chatbot-input button {
+        background: var(--accent-gold);
+        color: var(--bg);
+        border: none;
+        border-radius: 20px;
+        padding: 10px 18px;
+        margin-left: 8px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .chatbot-input button:hover {
+        opacity: 0.9;
+      }
+
+      /* CANVAS */
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+        .hero h2 {
+          font-size: 34px;
+        }
+        .hero-img {
+          width: 130px;
+          height: 130px;
+        }
+        .collapsible-header {
+          font-size: 1rem;
+          padding: 10px 16px;
+        }
+        .collapsible-content.show {
+          padding: 12px 16px 16px;
+        }
+        section {
+          padding: 50px 6%;
+        }
+        .contact-wrapper {
+          flex-direction: column;
+        }
+        .skill-box,
+        .lang-item,
+        .tool-item,
+        .edu-card {
+          min-width: 100%;
+        }
+        .chatbot-window {
+          width: 300px;
+          right: 0;
+          bottom: 70px;
+        }
+        .lang-points p,
+        .tool-points p {
+          font-size: 11px;
+        }
+        .tools-second-row .tool-item {
+          flex: 1;
+          min-width: 100%;
+        }
+        .project-image {
+          width: 100%;
+          max-width: 380px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="" alt="Expanded view" />
+    </div>
+
+    <nav>
+      <h1>Malaimathi T C</h1>
+      <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#education">EDUCATION</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#programming">PROGRAMMING</a></li>
+        <li><a href="#tools">TOOLS</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#internship">INTERNSHIP</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+      <div class="toggle" onclick="toggleTheme()">🌙 / ☀️</div>
+    </nav>
+
+    <!-- HOME -->
+    <div class="hero" id="home">
+      <img class="hero-img" src="malaimathi.png" alt="Malaimathi T C Profile" />
+      <h2>Malaimathi T C</h2>
+      <p>Java Developer | Electrical and Electronics Engineer</p>
+      <p>
+        Career Objective: To secure a challenging entry-level position where I
+        can apply Java programming, electrical engineering fundamentals, and
+        problem-solving skills to develop efficient real-world systems.
+      </p>
+    </div>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h3>EDUCATION</h3>
+      <div class="education-grid">
+        <div class="edu-card">
+          <h4>B.E – Electrical and Electronics Engineering</h4>
+          <p>Government College of Engineering, Salem</p>
+          <p>CGPA: 6.66 (2022–2025)</p>
+        </div>
+        <div class="edu-card">
+          <h4>HSC</h4>
+          <p>Vairams Matric Higher Secondary School, Pudukkottai</p>
+          <p>Percentage: 91.6% | Year: 2022</p>
+        </div>
+        <div class="edu-card">
+          <h4>SSLC</h4>
+          <p>Vairams Matric Higher Secondary School, Pudukkottai</p>
+          <p>Percentage: 86.6% | Year: 2020</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS with image placeholders -->
+    <section id="skills">
+      <h3>TECHNICAL SKILLS</h3>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <img
+            class="skill-img"
+            src="circuit.jpg"
+            alt="Circuit Analysis Icon"
+            onerror="this.style.display='none'"
+          />
+          <p>Electrical Circuit Analysis & Troubleshooting</p>
+        </div>
+        <div class="skill-box">
+          <img
+            class="skill-img"
+            src="control.jpg"
+            alt="Control Panel Icon"
+            onerror="this.style.display='none'"
+          />
+          <p>Control Panel Wiring</p>
+        </div>
+        <div class="skill-box">
+          <img
+            class="skill-img"
+            src="embedded.jpg"
+            alt="Embedded Systems Icon"
+            onerror="this.style.display='none'"
+          />
+          <p>Embedded Systems and IoT</p>
+        </div>
+        <div class="skill-box">
+          <img
+            class="skill-img"
+            src="sensor.PNG"
+            alt="Sensors Icon"
+            onerror="this.style.display='none'"
+          />
+          <p>Sensors, Relays, and Controllers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMMING LANGUAGES with image placeholders -->
+    <section id="programming">
+      <h3>PROGRAMMING LANGUAGES</h3>
+      <div class="programming-grid">
+        <div class="lang-item">
+          <img
+            class="lang-img"
+            src="java.png"
+            alt="Java Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="lang-name">Core Java</div>
+          <div class="lang-points">
+            <p>OOP concepts</p>
+            <p>Collections & exceptions</p>
+            <p>Console applications</p>
+          </div>
+        </div>
+        <div class="lang-item">
+          <img
+            class="lang-img"
+            src="c.png"
+            alt="C Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="lang-name">C Programming</div>
+          <div class="lang-points">
+            <p>Variables, loops & functions</p>
+            <p>Basic algorithms</p>
+            <p>Structured programming</p>
+          </div>
+        </div>
+        <div class="lang-item">
+          <img
+            class="lang-img"
+            src="python.jpg"
+            alt="Python Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="lang-name">Python (Basic)</div>
+          <div class="lang-points">
+            <p>Variables, data types, and control structures</p>
+            <p>Functions and modules</p>
+            <p>Basic data structures (lists, dictionaries, tuples)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFTWARE TOOLS with image placeholders, MS Office and HTML in reduced centered boxes -->
+    <section id="tools">
+      <h3>SOFTWARE TOOLS</h3>
+      <!-- First row: MATLAB, Multisim, Tinkercad -->
+      <div class="tools-grid">
+        <div class="tool-item">
+          <img
+            class="tool-img"
+            src="matlab.jpg"
+            alt="MATLAB Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="tool-name">MATLAB</div>
+          <div class="tool-points">
+            <p>Numerical computing & simulation</p>
+            <p>Circuit analysis</p>
+            <p>Basic scripting & functions</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <img
+            class="tool-img"
+            src="multisim.jpg"
+            alt="Multisim Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="tool-name">Multisim</div>
+          <div class="tool-points">
+            <p>Circuit schematic design and simulation</p>
+            <p>Analog and digital circuit analysis</p>
+            <p>Component selection and virtual instruments</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <img
+            class="tool-img"
+            src="tinkercad.png"
+            alt="Tinkercad Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="tool-name">Tinkercad</div>
+          <div class="tool-points">
+            <p>Virtual circuit design</p>
+            <p>Arduino simulation</p>
+            <p>Component testing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second row: MS Office and HTML - reduced size and centered -->
+      <div class="tools-second-row">
+        <div class="tool-item">
+          <img
+            class="tool-img"
+            src="pffice.jpg"
+            alt="MS Office Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="tool-name">MS Office</div>
+          <div class="tool-points">
+            <p>Word documentation</p>
+            <p>Excel basics</p>
+            <p>PowerPoint presentations</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <img
+            class="tool-img"
+            src="html.png"
+            alt="HTML Logo"
+            onerror="this.style.display='none'"
+          />
+          <div class="tool-name">HTML</div>
+          <div class="tool-points">
+            <p>Structured web page design</p>
+            <p>Forms & tables</p>
+            <p>Responsive basics</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <h3>PROJECTS</h3>
+
+      <!-- AUTOMATIC FIRE DETECTION PROJECT -->
+      <div class="project-with-image">
+        <div
+          class="project-image"
+          onclick="openLightbox(this.querySelector('img').src)"
+        >
+          <img
+            src="project.jpeg"
+            alt="Fire Detection System IoT Prototype"
+            onerror="this.src='https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop'"
+          />
+        </div>
+        <div class="project-content">
+          <span class="project-title"
+            >Automatic Fire Detection and Prevention System</span
+          >
+          <p style="margin-top: 8px">
+            <em>IoT & Embedded Systems | Duration: 3 Months</em>
+          </p>
+          <p>
+            Designed and developed an intelligent IoT-based fire detection and
+            automatic fire suppression system to enhance safety in residential
+            and industrial environments.
+          </p>
+        </div>
+      </div>
+
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Key Responsibilities<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Integrated ESP8266 for real-time IoT communication.</li>
+            <li>Configured flame sensor for accurate fire detection.</li>
+            <li>Implemented GPS tracking with live location updates.</li>
+            <li>Developed Telegram alert notification system.</li>
+            <li>Designed automatic water pump activation using relay.</li>
+            <li>Performed circuit design, wiring, and testing.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          System Architecture<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li><b>Input Layer:</b> Flame sensor detects fire signals.</li>
+            <li><b>Processing Layer:</b> ESP8266 processes sensor data.</li>
+            <li>
+              <b>Communication Layer:</b> Wi-Fi sends alerts via Telegram API.
+            </li>
+            <li><b>Location Layer:</b> GPS provides real-time coordinates.</li>
+            <li>
+              <b>Output Layer:</b> Relay activates submersible water pump.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Working Methodology<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Continuous flame spectrum monitoring.</li>
+            <li>Threshold-based detection triggers ESP8266 interrupt.</li>
+            <li>Telegram alert with GPS coordinates and timestamp.</li>
+            <li>Automatic water pump activation via relay control.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Project Outcome<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Low-cost reliable fire safety prototype.</li>
+            <li>Reduced emergency response time significantly.</li>
+            <li>Validated IoT and embedded system integration.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Applications<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Residential buildings & smart homes</li>
+            <li>Industrial warehouses & chemical plants</li>
+            <li>Electric vehicle charging stations</li>
+            <li>Agricultural storage & server rooms</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- FINPATH AI PROJECT -->
+      <div class="project-with-image">
+        <div
+          class="project-image"
+          onclick="openLightbox(this.querySelector('img').src)"
+        >
+          <img
+            src="finpath ai.PNG"
+            alt="FinPath AI Financial Planning Dashboard"
+            onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'"
+          />
+        </div>
+        <div class="project-content">
+          <span class="project-title"
+            >FinPath AI – Intelligent Financial Planning Web Application</span
+          >
+          <p style="margin-top: 8px">
+            <strong>Project Overview:</strong><br />FinPath AI is an AI-powered
+            web application designed to help users plan and visualize their
+            financial future. The system analyzes user inputs such as income,
+            expenses, and savings to generate intelligent financial simulations.
+            It provides insights into budgeting, emergency fund planning, and
+            long-term investment growth through an interactive and user-friendly
+            interface.
+          </p>
+
+          <div class="project-links">
+            <a href="https://malaimathitc.github.io/FinPath-AI/" target="_blank"
+              >🔗 Live Demo</a
+            >
+            <a
+              href="https://github.com/malaimathitc/FinPath-AI/"
+              target="_blank"
+              >📁 GitHub Repository</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <strong>Technologies Used:</strong><br />HTML, CSS, JavaScript, AI-based
+        financial logic, GitHub Pages
+      </p>
+
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Problem Statement<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            Many individuals lack clarity in managing personal finances due to
+            the absence of simple tools that explain budgeting, savings, and
+            future financial risks. Traditional financial planning methods are
+            complex, time-consuming, and often inaccessible to beginners.
+          </p>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Solution<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            FinPath AI addresses this problem by offering a web-based financial
+            planning tool that uses AI-driven logic to simulate multiple future
+            financial scenarios. By entering basic financial details, users can
+            instantly visualize possible outcomes and make informed financial
+            decisions.
+          </p>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Key Features<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>
+              AI-based financial simulations for multiple future scenarios.
+            </li>
+            <li>Budget planning and savings analysis.</li>
+            <li>Emergency fund estimation based on income and expenses.</li>
+            <li>Investment growth visualization for long-term planning.</li>
+            <li>
+              Responsive and modern user interface compatible with all devices.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Role<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Designed and developed the complete web application.</li>
+            <li>Implemented AI-driven financial simulation logic.</li>
+            <li>Created responsive and user-friendly interfaces.</li>
+            <li>Deployed and maintained the project using GitHub Pages.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Outcome<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            The project successfully demonstrates the practical application of
+            AI concepts in personal finance. It highlights strong skills in web
+            development, problem-solving, and user-centric design, making it a
+            strong portfolio project for internships and entry-level roles.
+          </p>
+        </div>
+      </div>
+
+      <!-- MAALAISSOKEN ENGLISH PROJECT -->
+      <div class="project-with-image">
+        <div
+          class="project-image"
+          onclick="openLightbox(this.querySelector('img').src)"
+        >
+          <img
+            src="spoken.PNG"
+            alt="Maalai's Spoken English Platform"
+            onerror="this.src='https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop'"
+          />
+        </div>
+        <div class="project-content">
+          <span class="project-title"
+            >Maalai's Spoken English in Tamil – Online Learning Platform</span
+          >
+          <p style="margin-top: 8px">
+            <strong>Project Overview:</strong><br />Maalai's Spoken English in
+            Tamil is an educational web platform designed to help Tamil-speaking
+            learners improve their English communication skills in a simple and
+            practical way. The platform provides structured lessons, easy
+            explanations in Tamil, and real-life usage examples to make English
+            learning accessible for beginners. It focuses on building confidence
+            in speaking, understanding, and daily communication.
+          </p>
+
+          <div class="project-links">
+            <a href="https://maalaisspokenenglishintamil.in/" target="_blank"
+              >🔗 Live Demo</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <strong>Technologies Used:</strong><br />HTML, CSS, JavaScript,
+        Responsive Web Design
+      </p>
+
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Problem Statement<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            Many Tamil-speaking learners find it difficult to learn English due
+            to language barriers and complex teaching methods. Most platforms
+            use English as the primary teaching medium, making it hard for
+            beginners to understand basic concepts and apply them in real-life
+            communication.
+          </p>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Solution<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            This platform solves the problem by delivering English lessons
+            explained clearly in Tamil. It simplifies grammar, vocabulary, and
+            sentence formation using practical examples, enabling users to learn
+            quickly and effectively. The user-friendly interface ensures easy
+            navigation and a smooth learning experience.
+          </p>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Key Features<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Tamil-based explanations for easy understanding</li>
+            <li>Structured spoken English lessons for beginners</li>
+            <li>Practical examples for real-life communication</li>
+            <li>Simple and clean user interface</li>
+            <li>Fully responsive design for mobile and desktop users</li>
+            <li>Easy navigation for seamless learning experience</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Role<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>Developed and structured the educational website</li>
+            <li>Designed a responsive and user-friendly interface</li>
+            <li>Organized learning content for better user understanding</li>
+            <li>Implemented front-end using HTML, CSS, and JavaScript</li>
+            <li>Ensured cross-device compatibility.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Outcome<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <p>
+            The project successfully provides an accessible platform for Tamil
+            learners to improve their English communication skills. It
+            demonstrates strong abilities in web development, UI/UX design, and
+            creating user-focused educational solutions, making it a valuable
+            addition to the portfolio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIP SECTION -->
+    <section id="internship">
+      <h3>INTERNSHIP</h3>
+
+      <p>
+        <b>EMGLITZ TECHNOLOGIES</b><br />Duration: December 2025<br />Designed
+        and simulated ECU-based embedded control systems for electric vehicles
+        (EVs) using MATLAB/Simulink, focusing on real-time applications. Applied
+        concepts of vehicle dynamics, automotive sensors, PID control, BMS, and
+        CCS in EV control system development.
+      </p>
+      <p>
+        <b>Skills Gained:</b> Embedded Systems, Control Systems (PID), Electric
+        Vehicle Technology, MATLAB / Simulink, Automotive Electronics.
+      </p>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Responsibilities & Work<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>
+              Worked on embedded technology applications in Electric Vehicles
+              (EVs).
+            </li>
+            <li>
+              Studied and implemented Electronic Control Unit (ECU) based
+              systems.
+            </li>
+            <li>
+              Designed and simulated Cruise Control System (CCS) using PID
+              control.
+            </li>
+            <li>
+              Developed and analyzed Battery Management System (BMS) for battery
+              safety and monitoring.
+            </li>
+            <li>
+              Analyzed EV architecture including motor, battery, and power
+              electronics.
+            </li>
+            <li>
+              Worked with sensors and actuators for real-time vehicle control.
+            </li>
+            <li>Performed system-level simulations using MATLAB/Simulink.</li>
+          </ul>
+        </div>
+      </div>
+
+      <br />
+
+      <p>
+        <b>General Electrical and Electronic Solution, Salem</b><br />Duration:
+        2 Weeks – Industrial Training<br />Executed motor control circuits and
+        electrical panel wiring using industrial components such as contactors,
+        relays, and motor starters, implementing basic industrial control logic.
+        Gained hands-on exposure to power systems, substation equipment, and
+        electrical safety standards in practical industrial environments.
+      </p>
+      <p>
+        <b>Skills Gained:</b> Motor Control and Protection Systems, Electrical
+        Panel Wiring and Troubleshooting, Control Logic Design, Industrial
+        Components, Power System Fundamentals, Transformer and Substation
+        Basics, Electrical Installation and Industrial Safety Practices.
+      </p>
+      <div class="collapsible-section">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          Responsibilities & Work<span>▼</span>
+        </div>
+        <div class="collapsible-content">
+          <ul>
+            <li>
+              Worked on motor control circuits including DOL starter, Star-Delta
+              starter, and Forward/Reverse control.
+            </li>
+            <li>
+              Performed electrical wiring and panel design using contactors,
+              relays, timers, and push buttons.
+            </li>
+            <li>
+              Designed and implemented DOL starter circuits for motor operation.
+            </li>
+            <li>
+              Implemented Star-Delta starter to reduce motor starting current.
+            </li>
+            <li>
+              Designed Forward and Reverse motor control systems with electrical
+              interlocking.
+            </li>
+            <li>
+              Studied and analyzed transformers (CT, PT), circuit breakers, and
+              protection systems.
+            </li>
+            <li>Worked on power factor correction using capacitor banks.</li>
+            <li>
+              Assisted in substation equipment installation and levelling
+              techniques.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h3>CONTACT</h3>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p><strong>Name:</strong> Malaimathi T C</p>
+          <p><strong>Email:</strong> t.c.malaimathi1028@gmail.com</p>
+          <p><strong>LinkedIn:</strong> linkedin.com/in/MalaimathiTC</p>
+        </div>
+
+        <div class="contact-form">
+          <h4>CONTACT ME</h4>
+          <form id="messageForm">
+            <div class="form-group">
+              <input
+                type="text"
+                id="userName"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="userEmail"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="userMessage"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+            <div id="formFeedback" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHATBOT -->
+    <div class="chatbot-container">
+      <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+      <div class="chatbot-window hidden" id="chatbotWindow">
+        <div class="chatbot-header">
+          <span>Resume Assistant</span>
+          <button onclick="toggleChatbot()">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+          <div class="message bot">
+            Hello! I can answer questions about Malaimathi's education, skills,
+            projects, and experience. What would you like to know?
+          </div>
+        </div>
+        <div class="chatbot-input">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Ask about education, skills, projects..."
+            onkeypress="if(event.key==='Enter') sendMessage()"
+          />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Lightbox functions
+      function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = imageSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Close lightbox with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+      });
+
+      // Resume text for chatbot
+      const resumeText = `MALAIMATHI T C
+Email: t.c.malaimathi1028@gmail.com | Phone: +91 6374257667
+
+OBJECTIVE: To secure an entry-level position in a reputable Electrical and Electronics organization where I can apply my engineering knowledge, technical skills, and problem-solving abilities.
+
+EDUCATION:
+- Government College of Engineering, Salem | B.E. Electrical and Electronics Engineering | CGPA: 6.66 (Upto Sem VII) | Nov 2022 - June 2025
+- Vairams Matric Higher Secondary School, Pudukkottai | HSC | Percentage: 91.6% | May 2022
+- Vairams Matric Higher Secondary School, Pudukkottai | SSLC | Percentage: 86.6% | Mar 2020
+
+INTERNSHIPS:
+1) EMLIGITZ TECHNOLOGIES - Salem | Dec 2025
+- Studied embedded system architecture and its applications in electric vehicle (EV) technology
+- Worked with microcontrollers, sensors, electronic control modules
+- Gained exposure to battery management systems (BMS), EV control circuits
+
+2) General Electrical and Electronic Solution, Salem | Jul 1 2025 - Jul 14 2025
+- Worked with electrical components: contactors, timers, counters, sensors, controllers
+- Assisted in control panel design, panel sizing, and electrical wiring practices
+- Learned schematic interpretation and electrical component integration
+
+PROJECTS:
+1) Automatic Fire Detection and Prevention System
+- IoT-based fire detection system using ESP8266, flame sensor, GPS module, relay module, water pump
+- Automatic fire suppression mechanism and real-time alert system using Telegram with GPS tracking
+
+2) FinPath AI - Intelligent Financial Advisor (Web Application)
+- AI-powered financial assistant for expense tracking, budget management
+- Applied 50-30-20 rule-based financial models
+- Live Demo: https://malaimathitc.github.io/FinPath-AI/
+- GitHub: https://github.com/malaimathitc/FinPath-AI/
+- Tech Stack: HTML, CSS
+
+TECHNICAL SKILLS:
+- Electrical Skills: Electrical Circuit Analysis, Control Panel Wiring, Electrical Troubleshooting, Sensors and Controllers
+- Programming: C (Basic), Java (Basic), Python (Basic)
+- Tools: MATLAB, Multisim, Tinkercad, Multimeter and Electrical Testing Tools
+
+ACTIVITIES: Active member of IEI Student Chapter
+LANGUAGES: Tamil (Fluent), English (Fluent)`;
+
+      // Chatbot functions
+      function toggleChatbot() {
+        const window = document.getElementById("chatbotWindow");
+        window.classList.toggle("hidden");
+      }
+
+      function addBotMessage(text) {
+        const messagesDiv = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message bot";
+        messageDiv.textContent = text;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function addUserMessage(text) {
+        const messagesDiv = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message user";
+        messageDiv.textContent = text;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const question = input.value.trim();
+        if (!question) return;
+
+        addUserMessage(question);
+        input.value = "";
+
+        const answer = searchResume(question);
+        addBotMessage(answer);
+      }
+
+      function searchResume(question) {
+        const q = question.toLowerCase();
+
+        if (
+          q.includes("education") ||
+          q.includes("study") ||
+          q.includes("college") ||
+          q.includes("degree") ||
+          q.includes("school")
+        ) {
+          return "Education Details:\n• B.E. Electrical and Electronics Engineering from Government College of Engineering, Salem with CGPA 6.66 (2022-2025)\n• HSC: 91.6% from Vairams Matric Higher Secondary School, Pudukkottai (2022)\n• SSLC: 86.6% from Vairams Matric Higher Secondary School, Pudukkottai (2020)";
+        }
+
+        if (q.includes("skill") || q.includes("technical")) {
+          return "Technical Skills:\n• Electrical: Circuit Analysis, Control Panel Wiring, Troubleshooting, Sensors, Controllers\n• Programming: C, Java, Python (Basic)\n• Tools: MATLAB, Multisim, Tinkercad, Electrical Testing Tools";
+        }
+
+        if (
+          q.includes("project") ||
+          q.includes("built") ||
+          q.includes("made")
+        ) {
+          return "Projects:\n1. Automatic Fire Detection and Prevention System - IoT-based system using ESP8266, flame sensor, GPS, Telegram alerts\n2. FinPath AI - AI-powered financial advisor web app for expense tracking and budget management. Live: https://malaimathitc.github.io/FinPath-AI/ | GitHub: https://github.com/malaimathitc/FinPath-AI/\n3. Maalai's Spoken English in Tamil - Educational platform for Tamil learners to improve English communication skills";
+        }
+
+        if (
+          q.includes("intern") ||
+          q.includes("training") ||
+          q.includes("work experience")
+        ) {
+          return "Internships:\n1. EMLIGITZ TECHNOLOGIES (Dec 2025) - Embedded systems, EV technology, BMS, sensor interfacing\n2. General Electrical and Electronic Solution (Jul 2025) - Control panel design, electrical wiring, components integration";
+        }
+
+        if (
+          q.includes("email") ||
+          q.includes("contact") ||
+          q.includes("phone")
+        ) {
+          return "Email: t.c.malaimathi1028@gmail.com | LinkedIn: linkedin.com/in/MalaimathiTC";
+        }
+
+        if (
+          q.includes("objective") ||
+          q.includes("goal") ||
+          q.includes("aim")
+        ) {
+          return "Objective: To secure an entry-level position in a reputable Electrical and Electronics organization where I can apply engineering knowledge, technical skills, and problem-solving abilities.";
+        }
+
+        if (q.includes("language") || q.includes("speak")) {
+          return "Languages: Tamil (Fluent), English (Fluent)";
+        }
+
+        return "I can help you with information about Malaimathi's education, skills, projects, internships, contact details, and more. Try asking: 'What are his skills?' or 'Tell me about his education' or 'What projects has he done?'";
+      }
+
+      function toggleCollapse(headerElement) {
+        const sectionDiv = headerElement.closest(".collapsible-section");
+        if (!sectionDiv) return;
+        const contentDiv = sectionDiv.querySelector(".collapsible-content");
+        const arrowSpan = headerElement.querySelector("span");
+        if (!contentDiv) return;
+        const isVisible = contentDiv.classList.contains("show");
+        if (isVisible) {
+          contentDiv.classList.remove("show");
+          if (arrowSpan) arrowSpan.innerHTML = "▼";
+        } else {
+          contentDiv.classList.add("show");
+          if (arrowSpan) arrowSpan.innerHTML = "▲";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelectorAll(".collapsible-content")
+          .forEach((c) => c.classList.remove("show"));
+        document
+          .querySelectorAll(".collapsible-header span")
+          .forEach((s) => (s.innerHTML = "▼"));
+      });
+
+      // PARTICLE NETWORK
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      let w,
+        h,
+        particles = [],
+        COUNT = 100,
+        MAX = 120;
+      function resizeCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+      class Particle {
+        constructor() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+        }
+        move() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > w) this.vx *= -1;
+          if (this.y < 0 || this.y > h) this.vy *= -1;
+        }
+        draw() {
+          ctx.fillStyle =
+            getComputedStyle(document.body)
+              .getPropertyValue("--accent-gold")
+              .trim() || "#facc15";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+      function connect() {
+        for (let i = 0; i < particles.length; i++)
+          for (let j = i + 1; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x,
+              dy = particles[i].y - particles[j].y,
+              d = Math.sqrt(dx * dx + dy * dy);
+            if (d < MAX) {
+              ctx.strokeStyle = `rgba(250,204,21,${0.4 * (1 - d / MAX)})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+      }
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach((p) => {
+          p.move();
+          p.draw();
+        });
+        connect();
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      function toggleTheme() {
+        document.body.classList.toggle("light");
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("light") ? "light" : "dark"
+        );
+      }
+      if (localStorage.getItem("theme") === "light")
+        document.body.classList.add("light");
+
+      document
+        .getElementById("messageForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("userName").value.trim();
+          const email = document.getElementById("userEmail").value.trim();
+          const message = document.getElementById("userMessage").value.trim();
+          const feedback = document.getElementById("formFeedback");
+          if (!name || !email || !message) {
+            feedback.innerHTML = "Please fill all fields.";
+            feedback.style.color = "#facc15";
+            return;
+          }
+          if (!email.includes("@")) {
+            feedback.innerHTML = "Enter valid email.";
+            feedback.style.color = "#facc15";
+            return;
+          }
+          const mailto = `mailto:t.c.malaimathi1028@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(
+            name
+          )}&body=Name: ${encodeURIComponent(
+            name
+          )}%0AEmail: ${encodeURIComponent(
+            email
+          )}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+          window.location.href = mailto;
+          feedback.innerHTML = "Opening email client...";
+          feedback.style.color = "#facc15";
+          setTimeout(() => {
+            document.getElementById("userName").value = "";
+            document.getElementById("userEmail").value = "";
+            document.getElementById("userMessage").value = "";
+            setTimeout(() => (feedback.innerHTML = ""), 3000);
+          }, 800);
+        });
+    </script>
+  </body>
+</html>
